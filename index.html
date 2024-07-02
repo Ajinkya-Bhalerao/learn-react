@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="root">
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- to put react into out project we can use the below 2 script tag which we can get from CDN React page -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    
     <script>
-        const heading = document.createElement("h1")
-        heading.innerHTML = "This is from JS File" 
-        const root = document.getElementById("root")
-        root.appendChild(heading)
+        // createElement will create h1 tag element in react
+        const heading = React.createElement("h1",{},"Hello World From React")
+
+        // we place everything inside root in react and to create root we have ReactDOM.createRoot methode
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        // finally we will render heading tag in root using render() method
+        root.render(heading)
+
     </script>
-</body>
+  </body>
 </html>
