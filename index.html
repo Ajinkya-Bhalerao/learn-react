@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css"></link>
     <title>React</title>
   </head>
   <body>
@@ -17,17 +18,7 @@
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
-    
-    <script>
-        // createElement will create h1 tag element in react
-        const heading = React.createElement("h1",{},"Hello World From React")
 
-        // we place everything inside root in react and to create root we have ReactDOM.createRoot methode
-        const root = ReactDOM.createRoot(document.getElementById("root"));
-
-        // finally we will render heading tag in root using render() method
-        root.render(heading)
-
-    </script>
+    <script src="App.js"></script>
   </body>
 </html>
