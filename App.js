@@ -1,17 +1,21 @@
-// nested react element using third paramenter as child element in createElement.
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { jsx } from "react/jsx-runtime";
 
-const heading = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", { id: "heading" }, "heading 1"),
-    React.createElement("h2", { id: "heading" }, "heading 2"),
-  ]),React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", { id: "heading" }, "heading 1"),
-    React.createElement("h2", { id: "heading" }, "heading 2"),
-  ]),React.createElement("button",{id:"btn"},"submit")
-]);
+// Traditinal way to create react element but not used now
+// const heading = React.createElement("h1",{id: "root"}, "Welcome React")
 
-// we place everything inside root in react and to create root we have ReactDOM.createRoot methode
+// JSX -> its not a part of react or it is not html in js.
+// Can be written in single line
+const jsxHeading = <h1 id="heading">This is from JSX </h1>;
+
+// For multiple line we should use ( ).
+const multiJSX = (
+  <h1 className="heading" tabIndex="5">
+    Hello From React Using JSX
+  </h1>
+);
+console.log(jsxHeading);
+console.log(multiJSX)
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// finally we will render heading tag in root using render() method
-root.render(heading);
+root.render(multiJSX);
