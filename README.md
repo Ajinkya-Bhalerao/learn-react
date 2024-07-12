@@ -21,3 +21,30 @@
 - Tree Shaking Algorithm = parcel will remove unused code for you
 - Different dev and prod bundles
 
+
+# Food Ordering App
+/**
+App
+  Header
+    - logo
+    - Nav items
+    - cart
+  Body
+    - search
+    - restaurentContainer
+      - restaurent card
+      - time to delivery
+      - type of cusin
+      - star rating
+  Footer
+    - copyright
+    - links
+    - address
+    - contact
+**/
+
+
+# Two Types of export and import
+
+- default import/export - can be used only once in a file
+- nammed import/export -> used when we have to import/export multiple things in a single file
