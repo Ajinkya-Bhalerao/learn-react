@@ -104,3 +104,17 @@
   padding: 10px;
   margin-top: 25px;
 }
+
+.filter{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 100px;
+}
+
+.filter-btn{
+    margin: 10px;
+
+    padding: 5px;
+    cursor: pointer;
+
+}
