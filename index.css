@@ -25,7 +25,6 @@
   background-color: #e8acac;
   padding: 5px;
   margin: 5px;
-  height: 320px;
 }
 .res-card:hover {
   border: 1px solid black;
@@ -37,7 +36,7 @@
 }
 .res-logo {
   width: 190px;
-  height: 120px;
+  height: 160px;
   padding: 5px;
 }
 .res-name {
@@ -56,7 +55,6 @@
 }
 .rate-container {
   width: 200px;
-  height: 20px;
   text-align: center;
   background-color: #616f2e9b;
 }
@@ -116,5 +114,19 @@
 
     padding: 5px;
     cursor: pointer;
+}
 
+.shimmer-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
+}
+
+.shimmer-card{
+  width: 200px;
+  height: 300px;
+  background-color: #e8acac;
+  padding: 5px;
+  margin: 5px;
 }
