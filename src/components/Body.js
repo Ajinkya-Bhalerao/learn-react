@@ -4,11 +4,12 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   //state variable -
+
   const [listOfRes, setListOfRes] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
 
   const fetchData = async () => {
     const data = await fetch(
