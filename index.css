@@ -31,9 +31,6 @@
   cursor: pointer;
 }
 
-.search {
-  padding: 10px;
-}
 .res-logo {
   width: 190px;
   height: 160px;
@@ -138,4 +135,21 @@
   margin-top: 20px;
   font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
+}
+
+
+.search{
+padding: 5px;
+display: flex;
+}
+.search-box{
+  padding: 5px;
+  margin: 5px;
+}
+.search-btn{
+  padding: 0px 10px;
+  height: 30px;
+  padding: 5px;
+  margin-top: 5px;
 }
