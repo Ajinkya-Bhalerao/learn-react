@@ -2,43 +2,42 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-
-
-
-
-
-const Footer = () => {
-  return (
-    <div className="footer-container">
-      <div className="copyright-container"> copyright @ajinkyabhalerao</div>
-      <div className="footer-links">
-        <ul>
-          <li>Contact US</li>
-          <li>About US</li>
-          <li>Email</li>
-          <li>LinkedIn</li>
-        </ul>
-      </div>
-      <div className="Address-container">
-        <h3>2650 College Place, Fullerton, CA 92831</h3>
-      </div>
-      <div className="feedback-container">
-        <a href="/">Feedback</a>
-      </div>
-    </div>
-  );
-};
+import Footer from "./components/Footer";
+import About from "./components/About";
+import Error from "./components/Error";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Contact from "./components/Contact";
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
-      <Footer />
-      {/* Footer */}
+      <Outlet />
     </div>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
