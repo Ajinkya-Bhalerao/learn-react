@@ -44,13 +44,32 @@ const RestaurantMenu = () => {
           <li key={idx}>
             {res?.card?.card?.title}
             <ul>
-              {res?.card?.card?.itemCards.map((item) => (
-                <li key={item?.card?.info.id}>
-                  {item?.card?.info.name} -
-                  {item?.card?.info.defaultPrice / 100 ||
-                    item?.card?.info.price / 100}
-                </li>
-              ))}
+              {res?.card?.card?.itemCards ? (
+                res?.card?.card?.itemCards.map((item) => (
+                  <li key={item?.card?.info.id}>
+                    {item?.card?.info.name} - Rs
+                    {item?.card?.info.defaultPrice / 100 ||
+                      item?.card?.info.price / 100}
+                  </li>
+                ))
+              ) : (
+                <ul>
+                  {res?.card?.card?.categories.map((item, idx) => (
+                    <li key={idx}>
+                      {item.title}
+                      <ul>
+                        {item.itemCards.map((itemCard) => (
+                          <li key={itemCard?.card?.info?.id}>
+                            {itemCard?.card?.info?.name} - Rs
+                            {itemCard?.card?.info?.defaultPrice / 100 ||
+                              itemCard?.card?.info?.price / 100}
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </ul>
           </li>
         ))}
