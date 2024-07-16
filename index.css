@@ -180,3 +180,15 @@ display: flex;
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.user-card{
+  padding: 10px;
+  background-color: #616f2e4f;
+  border-radius: 2em;
+  width: 500px;
+  border: 1px solid;
+  max-width: fit-content;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}

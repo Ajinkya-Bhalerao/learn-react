@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_URL } from "../utils/constants";
+
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
 
   const [menuInfo, setMenuinfo] = useState("");
 
   const { resID } = useParams();
-  // only working with 64708, 322540 ids -> not working id res include catagory array.
-  console.log(resID);
 
   useEffect(() => {
     fetchMenu();
@@ -47,7 +46,7 @@ const RestaurantMenu = () => {
               {res?.card?.card?.itemCards ? (
                 res?.card?.card?.itemCards.map((item) => (
                   <li key={item?.card?.info.id}>
-                    {item?.card?.info.name} - Rs
+                    {item?.card?.info.name} - Rs.
                     {item?.card?.info.defaultPrice / 100 ||
                       item?.card?.info.price / 100}
                   </li>
@@ -60,7 +59,7 @@ const RestaurantMenu = () => {
                       <ul>
                         {item.itemCards.map((itemCard) => (
                           <li key={itemCard?.card?.info?.id}>
-                            {itemCard?.card?.info?.name} - Rs
+                            {itemCard?.card?.info?.name} - Rs.
                             {itemCard?.card?.info?.defaultPrice / 100 ||
                               itemCard?.card?.info?.price / 100}
                           </li>

@@ -1,8 +1,19 @@
+// import User from "./User";
+import UserClass from "./UserClass";
+
 const About = () => {
   return (
     <div>
-      <h1>About Page</h1>
-      <h2>This is About page of my APP</h2>
+      {/* <User
+        name={"Ajinkya Functional"}
+        location={"California Functional"}
+        contact={"ajinkyabhalerao11@gmail.com"}
+      /> */}
+      <UserClass
+        name={"Ajinkya Class"}
+        location={"California Class"}
+        contact={"ajinkyabhalerao3899@gmail.com"}
+      />
     </div>
   );
 };
