@@ -1,53 +1,47 @@
 import React from "react";
-import User from "./User";
+// import User from "./User";
 
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.name + "Child Constructor");
+
     this.state = {
-      count: 0,
-      count2: 2,
+      userData: {
+        name: "Dummy Name",
+        location: "Dummy location",
+      },
     };
+
+    console.log(this.props.name + "Child Constructor");
   }
 
-  componentDidMount() {
-    console.log(this.props.name + "Child Mount");
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/akshay");
+    const jsonData = await data.json();
+    // console.log(jsonData);
+    this.setState({
+      userData: jsonData,
+    });
+    console.log( this.props.name + "Mount")
+  }
+  componentDidUpdate(){
+    console.log("Component did Updated")
+  }
+  componentWillUnmount(){
+    console.log("Component unmounted!!!")
   }
   render() {
     console.log(this.props.name + "Child Render");
 
-    const { name, location, contact } = this.props;
-    const { count, count2 } = this.state;
     return (
       <div className="user-card">
-        <h2> {count}</h2>
-        <button
-          onClick={() => {
-            this.setState({
-              count: count + 1,
-            });
-          }}
-        >
-          +
-        </button>
-        <button
-          onClick={() => {
-            this.setState({
-              count: count - 1,
-            });
-          }}
-        >
-          -
-        </button>
-        <User
+        {/* <User
           name={name +" innerChild"}
           location={"California Class"}
           contact={"ajinkyabhalerao3899@gmail.com"}
-        />
-        <h2>Name: {name}</h2>
-        <h3>Location: {location}</h3>
-        <h4>Contact: {contact}</h4>
+        /> */}
+        <h2>Name: {this.state.userData.name}</h2>
+        <h3>Location: {this.state.userData.location}</h3>
       </div>
     );
   }

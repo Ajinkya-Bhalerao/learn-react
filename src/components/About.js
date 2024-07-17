@@ -1,43 +1,33 @@
 // import User from "./User";
 import UserClass from "./UserClass";
-import React from 'react'
+import React from "react";
 
-class About extends React.Component{
-
-  constructor(props){
+class About extends React.Component {
+  constructor(props) {
     super(props);
-    console.log("Parent Constructor");
+
+    // console.log("Parent Constructor");
   }
 
-  componentDidMount(){
-    console.log("Parent Mount")
+  componentDidMount() {
+    // console.log("Parent Mount")
   }
-  render(){
-    console.log("Parent Render")
+
+  componentDidUpdate() {
+    console.log("Component Updated Successfully");
+  }
+
+  render() {
+    // console.log("Parent Render")
     return (
       <div>
-        <UserClass
-          name={"First"}
-          location={"California Class"}
-          contact={"ajinkyabhalerao3899@gmail.com"}
-        />
-        <UserClass
-          name={"Second"}
-          location={"California Class"}
-          contact={"ajinkyabhalerao3899@gmail.com"}
-        />
-        <UserClass
-          name={"Third"}
-          location={"California Class"}
-          contact={"ajinkyabhalerao3899@gmail.com"}
-        />
+        <UserClass name = {"First"} location={"USA"}/>
+
       </div>
     );
   }
-
 }
 export default About;
-
 
 /*
   - parent contructor
@@ -97,7 +87,6 @@ export default About;
     - Thrid Mount
   - Prent Mount
 */
-
 
 // Commit is costly operation as it involves changing the DOM or Manipulating DOM
 // Therefor React batch all the compnents in render phase and triggres reconciliation algo making use of Virtual DOM
