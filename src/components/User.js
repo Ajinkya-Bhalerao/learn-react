@@ -1,26 +1,31 @@
 // import { useState } from "react";
-import React from "react";
+import { useEffect } from "react";
+const User = (props) => {
+  console.log(" Render");
 
-class User extends React.Component{
-  constructor(props){
-    super(props);
-    console.log(this.props.name+" constructor called")
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("Good Time");
+    }, 1000);
+    console.log("useEffect");
+    // This setInterval will create an issue -> will not stop even when we change our page
+    // therefore we need to clear interval in unmount as shown below -> limitation of single page application.
+    // This below return will work as unmounting and called just before component is to be unmount(just befor page changes)
 
-  componentDidMount(){
-    console.log(this.props.name+" Mount")
-  }
-  render(){
-    console.log(this.props.name+" Render")
-    const {name,location, contact} = this.props
-    return (
+    return () => {
+      clearInterval(timer);
+      console.log("Timer Stopped");
+    };
+  }, []);
 
-      <div className="user-card">
-        <h2>Name: {name}</h2>
-        <h3>Location: {location}</h3>
-        <h4>Contact: {contact}</h4>
-      </div>
-    );
-  }
-}
+  const { name, location, contact } = props;
+  return (
+    <div className="user-card">
+      <h2>Name: {name}</h2>
+      <h3>Location: {location}</h3>
+      <h4>Contact: {contact}</h4>
+    </div>
+  );
+};
+
 export default User;

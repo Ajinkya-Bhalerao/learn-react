@@ -1,5 +1,6 @@
-// import User from "./User";
+import User from "./User";
 import UserClass from "./UserClass";
+
 import React from "react";
 
 class About extends React.Component {
@@ -21,8 +22,9 @@ class About extends React.Component {
     // console.log("Parent Render")
     return (
       <div>
-        <UserClass name = {"First"} location={"USA"}/>
-
+        {/* uncomment the below code to see unmounting cycle in functional components */}
+        {/* <User name = {"Functional Component"} location={"USA"}/> */}
+        <UserClass name = {"Class Component"} location={"USA"} />
       </div>
     );
   }
