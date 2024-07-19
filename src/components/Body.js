@@ -13,7 +13,6 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
-    
   }, []);
 
   const fetchData = async () => {
@@ -32,35 +31,30 @@ const Body = () => {
     setFilteredRes(resData);
   };
 
-
-
   const onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false){
-    return <h1>You are Offline</h1>
+  if (onlineStatus === false) {
+    return <h1>You are Offline</h1>;
   }
 
   if (listOfRes.length === 0) {
     return <Shimmer />;
   }
 
-
-
   return (
-    <div className="body">
-      <div className="banner-container"></div>
-      <div className="filter">
-        <div className="search">
+    <div>
+      <div className="flex">
+        <div className="m-3 p-4 flex items-center">
           <input
             type="text"
-            className="search-box"
+            className="w-45 h-1 p-4 m-4 border-2 border-indigo-500/75 rounded-full"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="px-4 py-2 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
             onClick={() => {
               //Filter the res cards and update the UI.
               // console.log(searchText);
@@ -74,20 +68,29 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            setFilteredRes(listOfRes.filter((res) => res?.info?.avgRating > 4));
-          }}
-        >
-          Top Rated
-        </button>
+        <div className="m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 text-sm text-green-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-green-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+            onClick={() => {
+              setFilteredRes(
+                listOfRes.filter((res) => res?.info?.avgRating > 4)
+              );
+            }}
+          >
+            Top Rated
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRes.map((restaurent) => (
-          <Link key={restaurent?.info?.id} to={"/restaurants/" + restaurent?.info?.id}>
-            <RestaurantCard  resData={restaurent} />
+          
+          <Link
+            key={restaurent?.info?.id}
+            to={"/restaurants/" + restaurent?.info?.id}
+          >
+            <RestaurantCard resData={restaurent} />
           </Link>
+          
         ))}
       </div>
     </div>
