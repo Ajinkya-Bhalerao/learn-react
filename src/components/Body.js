@@ -13,6 +13,7 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
+    
   }, []);
 
   const fetchData = async () => {
@@ -25,7 +26,7 @@ const Body = () => {
     // console.log(jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info)
 
     resData =
-      jsonData.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      jsonData.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setListOfRes(resData);
     setFilteredRes(resData);
