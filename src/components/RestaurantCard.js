@@ -13,7 +13,7 @@ const RestaurantCard = (props) => {
     costForTwo,
   } = resData?.info;
   return (
-    <div className="m-4 p-4 w-[250px] h-auto rounded-xl bg-[#16dd5580] shadow-xl">
+    <div className="m-4 p-4 w-[250px] h-auto rounded-xl bg-[#16dd5580] shadow-xl hover:bg-[#56d0c28c]">
       <img className=" rounded-xl" src={CDN_URL + cloudinaryImageId} />
       <h3 className="m-2 font-bold text-pretty">{name}</h3>
       <h4 className="m-1 p-1">{costForTwo}</h4>

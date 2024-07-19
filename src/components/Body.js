@@ -24,11 +24,9 @@ const Body = () => {
     // What's in your mind -> Data
     // console.log(jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info)
 
-    resData = jsonData.data?.cards[4]
-      ? jsonData.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      : jsonData.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
+    resData =
+      jsonData.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     setListOfRes(resData);
     setFilteredRes(resData);
   };
@@ -36,7 +34,12 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) {
-    return <h1>You are Offline</h1>;
+    return (
+      <div className="px-[10px] py-[25px] m-auto mt-[200px] w-[500px] h-[100px] font-bold bg-slate-100 rounded-3xl text-center text-red-500">
+        <h2>Something Went Wrong!</h2>
+        <h2>Please Check You Internet Connection...</h2>
+      </div>
+    );
   }
 
   if (listOfRes.length === 0) {
@@ -49,7 +52,8 @@ const Body = () => {
         <div className="m-3 p-4 flex items-center">
           <input
             type="text"
-            className="w-45 h-1 p-4 m-4 border-2 border-indigo-500/75 rounded-full"
+            className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-full m-2 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            placeholder="Search for restaurants..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
