@@ -24,9 +24,11 @@ const Body = () => {
     // What's in your mind -> Data
     // console.log(jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info)
 
-    resData =
-      jsonData.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
+    resData = jsonData.data?.cards[4]
+      ? jsonData.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      : jsonData.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
     setListOfRes(resData);
     setFilteredRes(resData);
   };
@@ -83,14 +85,12 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap">
         {filteredRes.map((restaurent) => (
-          
           <Link
             key={restaurent?.info?.id}
             to={"/restaurants/" + restaurent?.info?.id}
           >
             <RestaurantCard resData={restaurent} />
           </Link>
-          
         ))}
       </div>
     </div>
