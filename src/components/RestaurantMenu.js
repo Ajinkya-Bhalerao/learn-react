@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-
+import DropMenu from "./DropMenu";
 const RestaurantMenu = () => {
-
   const { resID } = useParams();
-  
+
   // Custom Hook -> return resInfo and menuInfo array -> API call hook
   const [resInfo, menuInfo] = useRestaurantMenu(resID);
 
@@ -17,46 +16,23 @@ const RestaurantMenu = () => {
     resInfo?.cards[2]?.card?.card?.info;
 
   return (
-    <div className="menu-container">
-      <h1>{name}</h1>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{costForTwoMessage}</h4>
-      <h2>Menu</h2>
-      <ul>
-        {menuInfo && menuInfo.map((res, idx) => (
-          <li key={idx}>
-            {res?.card?.card?.title}
-            <ul>
-              {res?.card?.card?.itemCards ? (
-                res?.card?.card?.itemCards.map((item) => (
-                  <li key={item?.card?.info.id}>
-                    {item?.card?.info.name} - Rs.
-                    {item?.card?.info.defaultPrice / 100 ||
-                      item?.card?.info.price / 100}
-                  </li>
-                ))
-              ) : (
-                <ul>
-                  {res?.card?.card?.categories.map((item, idx) => (
-                    <li key={idx}>
-                      {item.title}
-                      <ul>
-                        {item.itemCards.map((itemCard) => (
-                          <li key={itemCard?.card?.info?.id}>
-                            {itemCard?.card?.info?.name} - Rs.
-                            {itemCard?.card?.info?.defaultPrice / 100 ||
-                              itemCard?.card?.info?.price / 100}
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className="m-5 p-5">
+      <div className="m-3 p-2 bg-[#ededd5] w-auto rounded-2xl ">
+        <h1 className="font-extrabold text-5xl text-gray-700">{name}</h1>
+        <h3 className="font-medium text-gray-700">{cuisines.join(", ")}</h3>
+        <h4 className="font-medium text-gray-700">{costForTwoMessage}</h4>
+      </div>
+      <div className="m-5 p-5 text-center">
+        <h2 className="font-extrabold text-2xl text-gray-700">Menu</h2>
+        <div className="font-medium ">
+          <ul className="m-2 p-2 list-decimal">
+            {menuInfo &&
+              menuInfo.map((res, idx) => (
+                <DropMenu key={idx} eachMenu={res}/>
+              ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

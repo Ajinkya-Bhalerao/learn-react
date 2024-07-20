@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    listStyleType: {
+      square: 'square',
+      roman: 'upper-roman',
+    }
   },
   plugins: [],
 }
