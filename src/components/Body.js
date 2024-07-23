@@ -1,7 +1,7 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardVeg = withVegLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -25,8 +27,9 @@ const Body = () => {
     // console.log(jsonData?.data?.cards[0]?.card?.card?.imageGridCards?.info)
 
     resData =
-      jsonData.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      jsonData.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
+
     setListOfRes(resData);
     setFilteredRes(resData);
   };
@@ -93,7 +96,11 @@ const Body = () => {
             key={restaurent?.info?.id}
             to={"/restaurants/" + restaurent?.info?.id}
           >
-            <RestaurantCard resData={restaurent} />
+            {restaurent?.info?.veg ? (
+              <RestaurantCardVeg resData={restaurent} />
+            ) : (
+              <RestaurantCard resData={restaurent} />
+            )}
           </Link>
         ))}
       </div>
