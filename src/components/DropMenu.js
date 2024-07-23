@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import ItemList from "./ItemList";
 
 const DropMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
   const res = props.eachMenu;
   return (
-    <div >
-      <h2 id="accordion-collapse-heading-1" className="bg-[#ededd5] rounded-2xl">
+    <div>
+      <h2
+        id="accordion-collapse-heading-1"
+        className="shadow-lg my-4 rounded-2xl"
+      >
         <button
           type="button"
           className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-700  rounded-t-xl gap-3 mb-2"
@@ -18,7 +21,7 @@ const DropMenu = (props) => {
           aria-controls="accordion-collapse-body-1"
           onClick={toggleAccordion}
         >
-          <span>{res?.card?.card?.title}</span>
+          <span className="text-20">{res?.card?.card?.title}</span>
           <svg
             data-accordion-icon
             className={`w-3 h-3 shrink-0 ${isOpen ? "rotate-180" : ""}`}
@@ -41,41 +44,27 @@ const DropMenu = (props) => {
         id="accordion-collapse-body-1"
         className={`${isOpen ? "bg-[#ededd5] rounded-2xl mb-2" : "hidden"}`}
         aria-labelledby="accordion-collapse-heading-1"
-
       >
-        <div className="p-5 border rounded-2xl">
-          <ul>
-            <li>
-              <ul className="list-decimal">
-                {res?.card?.card?.itemCards ? (
-                  res?.card?.card?.itemCards.map((item) => (
-                    <li key={item?.card?.info.id}>
-                      {item?.card?.info.name} - Rs.
-                      {item?.card?.info.defaultPrice / 100 ||
-                        item?.card?.info.price / 100}
-                    </li>
-                  ))
-                ) : (
-                  <ul>
-                    {res?.card?.card?.categories.map((item, idx) => (
-                      <li key={idx}>
-                        <span className="font-bold">{item.title}</span>
-                        <ul>
-                          {item.itemCards.map((itemCard) => (
-                            <li key={itemCard?.card?.info?.id}>
-                              {itemCard?.card?.info?.name} - Rs.
-                              {itemCard?.card?.info?.defaultPrice / 100 ||
-                                itemCard?.card?.info?.price / 100}
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </ul>
-            </li>
-          </ul>
+        <div className="p-5 bg-white shadow-lg rounded-2xl">
+          {res?.card?.card?.itemCards
+            ? res?.card?.card?.itemCards.map((item) => (
+                <ItemList
+                  key={item?.card?.info.id}
+                  itemDes={item?.card?.info}
+                />
+              ))
+            : res?.card?.card?.categories.map((item, idx) => (
+                <div key={idx}>
+                  <span className="font-bold">{item.title}</span>
+
+                  {item.itemCards.map((itemCard) => (
+                    <ItemList
+                      key={itemCard?.card?.info.id}
+                      itemDes={itemCard?.card?.info}
+                    />
+                  ))}
+                </div>
+              ))}
         </div>
       </div>
     </div>
@@ -83,5 +72,3 @@ const DropMenu = (props) => {
 };
 
 export default DropMenu;
-
-
