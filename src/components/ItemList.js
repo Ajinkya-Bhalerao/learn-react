@@ -1,7 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = (props) => {
-  
   const { id, name, defaultPrice, price, description, imageId } = props.itemDes;
   return (
     <div className="mx-2 my-3 p-2 shadow-lg rounded-xl border-b-1 flex justify-between">

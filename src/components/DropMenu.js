@@ -4,7 +4,6 @@ import ItemList from "./ItemList";
 const DropMenu = (props) => {
   const showItem = props.showItem;
   const setShowIndex = props.setShowIndex;
-  console.log(showItem);
 
   const toggleAccordion = () => {
     setShowIndex();

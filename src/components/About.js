@@ -1,6 +1,6 @@
 import User from "./User";
 import UserClass from "./UserClass";
-
+import UserContext from "../utils/UserContext";
 import React from "react";
 
 class About extends React.Component {
@@ -24,7 +24,11 @@ class About extends React.Component {
       <div>
         {/* uncomment the below code to see unmounting cycle in functional components */}
         {/* <User name = {"Functional Component"} location={"USA"}/> */}
-        <UserClass name = {"Class Component"} location={"USA"} />
+        <UserClass name={"Class Component"} location={"USA"} />
+
+        <UserContext.Consumer>
+          {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
+        </UserContext.Consumer>
       </div>
     );
   }

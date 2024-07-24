@@ -1,8 +1,9 @@
 import RestaurantCard, { withVegLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { json, Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //state variable -
@@ -12,8 +13,10 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardVeg = withVegLabel(RestaurantCard);
+  
+  const {loggedInUser,setUserName} = useContext(UserContext)
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchData();
   }, []);
 
@@ -22,9 +25,6 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     ).catch((e) => console.error(e));
     const jsonData = await data.json();
-
-    // What's in your mind -> Data
-    console.log(jsonData?.data?.cards[1]?.card?.card?.imageGridCards?.info)
 
     resData =
       jsonData.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
@@ -88,6 +88,18 @@ const Body = () => {
           >
             Top Rated
           </button>
+        </div>
+        <div className="m-4 p-4 flex items-center">
+          <label>UserName: </label>
+        <input
+            type="text"
+            className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-full m-2 py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            placeholder="Change Name Live..."
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
