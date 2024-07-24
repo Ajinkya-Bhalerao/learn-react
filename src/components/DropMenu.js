@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import ItemList from "./ItemList";
 
 const DropMenu = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const showItem = props.showItem;
+  const setShowIndex = props.setShowIndex;
+  console.log(showItem);
+
   const toggleAccordion = () => {
-    setIsOpen(!isOpen);
+    setShowIndex();
   };
   const res = props.eachMenu;
+
   return (
     <div>
       <h2
@@ -17,14 +21,14 @@ const DropMenu = (props) => {
           type="button"
           className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-700  rounded-t-xl gap-3 mb-2"
           data-accordion-target="#accordion-collapse-body-1"
-          aria-expanded={isOpen}
+          aria-expanded={showItem}
           aria-controls="accordion-collapse-body-1"
           onClick={toggleAccordion}
         >
           <span className="text-20">{res?.card?.card?.title}</span>
           <svg
             data-accordion-icon
-            className={`w-3 h-3 shrink-0 ${isOpen ? "rotate-180" : ""}`}
+            className={`w-3 h-3 shrink-0 ${showItem ? "rotate-180" : ""}`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -42,10 +46,10 @@ const DropMenu = (props) => {
       </h2>
       <div
         id="accordion-collapse-body-1"
-        className={`${isOpen ? "bg-[#ededd5] rounded-2xl mb-2" : "hidden"}`}
+        className={`${showItem ? "bg-[#ededd5] rounded-2xl mb-2" : "hidden"}`}
         aria-labelledby="accordion-collapse-heading-1"
       >
-        <div className="p-5 bg-white shadow-lg rounded-2xl">
+        <div className="p-5 border bg-white shadow-lg rounded-2xl">
           {res?.card?.card?.itemCards
             ? res?.card?.card?.itemCards.map((item) => (
                 <ItemList
