@@ -50,7 +50,7 @@ const RestaurantCard = (props) => {
 
 // ##################   Higher Order Components #####################
 
-// Higher order Function -> Takes RestaurantCard component as input and return new enhanced component
+// Higher order Component -> Takes RestaurantCard component as input and return new enhanced component
 // it will not change the RestaurantCard component it will make use of RestaurantCard and returns new component
 // this type of function are also called as pure function
 

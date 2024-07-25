@@ -4,10 +4,10 @@ import { CDN_URL } from "../utils/constants";
 
 const ItemList = (props) => {
   const { id, name, defaultPrice, price, description, imageId } = props.itemDes;
-  
+
   const dispatch = useDispatch();
   const handleAddItem = (itemData) => {
-    dispatch(addItem({itemData}));
+    dispatch(addItem({ itemData }));
   };
 
   return (
