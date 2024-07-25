@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = (props) => {
   const { id, name, defaultPrice, price, description, imageId } = props.itemDes;
+  
+  const dispatch = useDispatch();
+  const handleAddItem = (itemData) => {
+    dispatch(addItem({itemData}));
+  };
+
   return (
     <div className="mx-2 my-3 p-2 shadow-lg rounded-xl border-b-1 flex justify-between">
       <div id={id} className="w-10/12 m-3 text-left">
@@ -16,7 +24,10 @@ const ItemList = (props) => {
       {imageId ? (
         <div className="w-2/12 p-2">
           <div className="absolute">
-            <button className="p-1 broder bg-white ring-1 ring-red-500 rounded-lg hover:text-red-500">
+            <button
+              className="p-1 broder bg-white ring-1 ring-red-500 rounded-lg hover:text-red-500"
+              onClick={() => handleAddItem(props.itemDes)}
+            >
               Add +
             </button>
           </div>
@@ -28,7 +39,10 @@ const ItemList = (props) => {
         </div>
       ) : (
         <div className="m-7">
-          <button className="p-1 broder bg-white ring-1 ring-red-500 rounded-lg hover:text-red-500">
+          <button
+            className="p-1 broder bg-white ring-1 ring-red-500 rounded-lg hover:text-red-500"
+            onClick={() => handleAddItem(props.itemDes)}
+          >
             Add +
           </button>
         </div>

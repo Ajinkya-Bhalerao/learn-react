@@ -48,3 +48,12 @@ App
 
 - default import/export - can be used only once in a file
 - nammed import/export -> used when we have to import/export multiple things in a single file
+
+
+# Redux Toolkit
+  - Install @reactjs/toolkit and react-redux
+  - Build our own Store
+  - Connect store to our app
+  - Create a cartSlice (Slice)
+  - Dispatch(Action)
+  - Selector

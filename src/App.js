@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import About from "./components/About";
 import Error from "./components/Error";
+import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,8 +17,11 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
 
 const Grocery = lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About"));
+const Cart = lazy(() => import("./components/Cart"));
 
 const AppLayout = () => {
   const [userName, setUserName] = useState("");
@@ -30,12 +33,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
@@ -49,7 +54,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
@@ -64,6 +73,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Shimmer />}>
             <Grocery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense>
+            <Cart />
           </Suspense>
         ),
       },
