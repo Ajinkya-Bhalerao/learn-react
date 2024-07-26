@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 import { CDN_URL } from "../utils/constants";
 
 const ItemList = (props) => {
@@ -11,7 +11,7 @@ const ItemList = (props) => {
   };
 
   return (
-    <div className="mx-2 my-3 p-2 shadow-lg rounded-xl border-b-1 flex justify-between">
+    <div className="mx-2 my-3 p-2 shadow-sm rounded-xl border-b-2 flex justify-between">
       <div id={id} className="w-10/12 m-3 text-left">
         <div className="py-2">
           <span className="text-gray-800 my-5 py-2 font-semibold text-[15px]">
@@ -49,6 +49,24 @@ const ItemList = (props) => {
       )}
     </div>
   );
+};
+
+
+export const inCartItemList = () => {
+  return (props) => {
+    
+    const dispatcher = useDispatch();
+    const handleRemoveItem = () =>{
+      dispatcher(removeItem())
+    }
+    
+    return (
+      <div className="mx-2 my-3 p-2 rounded-xl border-b-1">
+        <ItemList {...props} />
+        <button className="ml-11 p-1 broder bg-white ring-1 ring-red-500 rounded-lg hover:text-red-500" onClick={handleRemoveItem}>Remove From Cart</button>
+      </div>
+    );
+  };
 };
 
 export default ItemList;

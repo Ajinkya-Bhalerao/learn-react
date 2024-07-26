@@ -1,18 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem, clearCart } from "../utils/cartSlice";
-import ItemList from "./ItemList";
+import ItemList, { inCartItemList } from "./ItemList";
 
 const Cart = () => {
   // For changing the state of store while removing Item and clearing cart we need dispatcher
   const dispatcher = useDispatch();
+  
   // Subscribe to the Store using Selector Now we can Access the data in Cart Item array -> array of updated cart items
   const cartItem = useSelector((store) => store.cart.items);
-  console.log(cartItem);
+
+
+  const ItemInCart = inCartItemList(ItemList)
 
   const handleClearCart = () => {
     dispatcher(clearCart());
     console.log(cartItem);
   };
+
+  
 
   return (
     <div className="m-2 p-2 text-center">
@@ -20,7 +25,7 @@ const Cart = () => {
       <div className=" w-auto mx-auto mt-10 p-2 text-center">
         {cartItem.map((listItem) => {
           return (
-            <ItemList
+            <ItemInCart
               key={listItem?.itemData?.id}
               itemDes={listItem?.itemData}
             />
