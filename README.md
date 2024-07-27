@@ -57,3 +57,13 @@ App
   - Create a cartSlice (Slice)
   - Dispatch(Action)
   - Selector
+
+
+# Setting up Testing
+  - Installed React Testing Lib
+  - Installed jest
+  - Installed Babel dependencies
+  - Configure Bable.config.js
+  - Configure Parcel rc file -> to disable default babel transpilation.
+  - jest -> npx jest --init
+  - Install JS DOM library
