@@ -8,3 +8,25 @@ test("Should load Contact us component", () => {
   const heading = screen.getByRole("heading");
   expect(heading).toBeInTheDocument()
 });
+
+test("Should load Button in Contact us page",()=>{
+  render(<Contact/>)
+  const btn = screen.getByRole("button")
+  expect(btn).toBeInTheDocument()
+})
+
+test("Should have 2 input",()=>{
+  //Rendering
+  render(<Contact/>)
+  
+  // to get all the input fields we have the methods getALLBy...
+
+  // Querying
+  const input = screen.getAllByRole("textbox")
+  
+  // check if we have 2 input fields or not
+  // console.log(input.length)
+  
+  // Assertion
+  expect(input.length).toBe(2)
+})
