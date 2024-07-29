@@ -11,7 +11,7 @@ const Contact = () => {
         <input
           type="textarea"
           className="m-2 p-2 border rounded-lg"
-          placeholder="Enter message..."
+          placeholder="Enter Name..."
         />
         <button className="px-4 py-2 text-m text-purple-600 font-semibold rounded-lg border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
           Submit

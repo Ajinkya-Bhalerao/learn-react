@@ -30,3 +30,10 @@ test("Should have 2 input",()=>{
   // Assertion
   expect(input.length).toBe(2)
 })
+
+test("To test with Text", ()=>{
+  render(<Contact/>)
+  const placeholder = screen.getAllByPlaceholderText("Enter Name...")
+  console.log(placeholder.length)
+  expect(placeholder.length).toBe(2)
+})
