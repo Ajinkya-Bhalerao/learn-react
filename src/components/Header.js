@@ -41,11 +41,11 @@ const Header = () => {
                 <div
                   className={
                     cartItems.length === 0
-                      ? ""
+                      ? "mr-1 px-3 w-auto content-center bg-red-400 rounded-full text-white"
                       : "mr-1 px-3 w-auto content-center bg-red-400 rounded-full text-white"
                   }
                 >
-                  {cartItems.length === 0 ? "" : cartItems.length}
+                  {cartItems.length === 0 ? "0" : cartItems.length}
                 </div>
                 <div className="">
                   <svg
@@ -104,7 +104,8 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
-          {/* <li className="px-4 text-red-600">{data.loggedInUser}</li> */}
+          {/* use of react useContect -> golably store data to access from any of the component inside application */}
+          <li className="px-4 text-red-600">{data.loggedInUser}</li>
         </ul>
       </div>
     </div>
