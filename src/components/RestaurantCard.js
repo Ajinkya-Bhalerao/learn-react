@@ -12,6 +12,8 @@ const RestaurantCard = (props) => {
     cloudinaryImageId,
     costForTwo,
   } = resData?.info;
+
+  
   return (
     <div className="m-4 p-4 w-[250px] h-auto rounded-xl bg-[#16dd5580] shadow-xl hover:bg-[#56d0c28c]">
       <img className=" rounded-xl" src={CDN_URL + cloudinaryImageId} />
@@ -59,7 +61,7 @@ export const withVegLabel = (RestaurantCard) => {
   return (props) => {
     // This below return is of component which return JSX code
     return (
-      <div >
+      <div>
         <label className="absolute bg-green-600 font-bold font-mono text-white w-10 my-0 mx-4 p-[5px] rounded-xl">Veg</label>
         {/* {...props} will directly pass all the received props to RestaurantCard */}
         <RestaurantCard {...props} />

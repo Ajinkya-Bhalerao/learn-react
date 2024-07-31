@@ -29,9 +29,9 @@ const Body = () => {
     resData =
       jsonData.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-
     setListOfRes(resData);
     setFilteredRes(resData);
+    console.log(resData)
   };
 
   const onlineStatus = useOnlineStatus();
